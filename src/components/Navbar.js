@@ -1,5 +1,5 @@
-import React from 'react';
-import { Container, Nav, Navbar } from 'react-bootstrap';
+import React, { useState } from 'react';
+import { Container, Nav, Navbar, Dropdown } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 const NavigationBar = () => {
@@ -12,43 +12,42 @@ const NavigationBar = () => {
   ];
 
   return (
-    <Navbar 
-      bg="dark" 
-      variant="dark" 
-      expand="lg" 
-      className="py-3 shadow-sm"
-    >
-      <Container>
-        <Navbar.Brand 
-          as={Link} 
-          to="/" 
-          className="fw-bold text-warning"
-        >
-          ScaleUp Network
-        </Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="ms-auto">
-            {navLinks.map((link, index) => (
-              <Nav.Link 
-                key={index} 
-                as={Link} 
-                to={link.to} 
-                className="mx-2 nav-link-hover"
-              >
-                {link.label}
-              </Nav.Link>
-            ))}
+    <Navbar bg="light" expand="lg" className="px-5">
+      <Navbar.Brand href="/" className="me-auto">ScaleUp Network</Navbar.Brand>
+      <Navbar.Toggle aria-controls="basic-navbar-nav" />
+      <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
+        <Nav className="align-items-center">
+          {navLinks.map((link, index) => (
             <Nav.Link 
               as={Link} 
-              to="/login" 
-              className="btn btn-outline-light ms-3"
+              to={link.to} 
+              key={index} 
+              className="mx-2"
+            >
+              {link.label}
+            </Nav.Link>
+          ))}
+          
+          <Dropdown>
+            <Dropdown.Toggle 
+              variant="outline-primary" 
+              id="login-dropdown" 
+              className="mx-2"
             >
               Login
-            </Nav.Link>
-          </Nav>
-        </Navbar.Collapse>
-      </Container>
+            </Dropdown.Toggle>
+
+            <Dropdown.Menu>
+              <Dropdown.Item as={Link} to="/user-login">
+                User Login
+              </Dropdown.Item>
+              <Dropdown.Item as={Link} to="/mentor-login">
+                Mentor Login
+              </Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
+        </Nav>
+      </Navbar.Collapse>
     </Navbar>
   );
 };
