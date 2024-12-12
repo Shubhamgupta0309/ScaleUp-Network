@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import NavigationBar from './components/Navbar';
+import Footer from './components/Footer';
 import Home from './pages/Home';
 import UserLogin from './pages/UserLogin';
 import MentorLogin from './pages/MentorLogin';
@@ -26,6 +27,7 @@ function App() {
         <Route path="/register" element={<UserRegister />} />
         <Route path="/mentor-application" element={<MentorApplication />} />
       </Routes>
+      <Footer/>
     </Router>
   );
 }
