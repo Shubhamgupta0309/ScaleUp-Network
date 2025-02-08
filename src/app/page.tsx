@@ -1,7 +1,7 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import { Button } from "@/components/ui/button"
+import { motion } from "framer-motion";
+import { Button } from "@/components/ui/button";
 
 function FloatingPaths({ position }: { position: number }) {
   const paths = Array.from({ length: 36 }, (_, i) => ({
@@ -15,11 +15,15 @@ function FloatingPaths({ position }: { position: number }) {
     } ${875 - i * 6} ${684 - i * 5 * position} ${875 - i * 6}`,
     color: `rgba(15,23,42,${0.1 + i * 0.03})`,
     width: 0.5 + i * 0.03,
-  }))
+  }));
 
   return (
     <div className="absolute inset-0 pointer-events-none">
-      <svg className="w-full h-full text-slate-950 dark:text-white" viewBox="0 0 696 316" fill="none">
+      <svg
+        className="w-full h-full text-slate-950 dark:text-white"
+        viewBox="0 0 696 316"
+        fill="none"
+      >
         <title>ScaleUp Network</title>
         {paths.map((path) => (
           <motion.path
@@ -43,15 +47,12 @@ function FloatingPaths({ position }: { position: number }) {
         ))}
       </svg>
     </div>
-  )
+  );
 }
 
-export default function BackgroundPaths({
-  title = "ScaleUp Network",
-}: {
-  title?: string
-}) {
-  const words = title.split(" ")
+export default function BackgroundPaths() {
+  const title = "ScaleUp Network"; // Define the title directly
+  const words = title.split(" ");
 
   return (
     <div className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-white dark:bg-neutral-950">
@@ -93,12 +94,21 @@ export default function BackgroundPaths({
           </h1>
 
           <div className="flex gap-4 justify-center ">
-            <Button variant="outline" className="text-2xl p-6 font-bold rounded-xl hover:bg-black hover:text-white transition-all duration-700 ease-in-out">Join the Network</Button>
-            <Button variant="outline" className="text-2xl p-6 font-bold rounded-xl bg-black text-white hover:bg-white hover:text-black transition-all duration-700 ease-in-out">Find a Mentor</Button>
+            <Button
+              variant="outline"
+              className="text-2xl p-6 font-bold rounded-xl hover:bg-black hover:text-white transition-all duration-700 ease-in-out"
+            >
+              Join the Network
+            </Button>
+            <Button
+              variant="outline"
+              className="text-2xl p-6 font-bold rounded-xl bg-black text-white hover:bg-white hover:text-black transition-all duration-700 ease-in-out"
+            >
+              Find a Mentor
+            </Button>
           </div>
-
         </motion.div>
       </div>
     </div>
-  )
+  );
 }
